@@ -12,4 +12,8 @@ To Do:
 import secret_santa
 
 ss = secret_santa.SecretSanta()
-results = a.run(elves)
+r = ss.run()
+print r
+print ss.couples
+
+
