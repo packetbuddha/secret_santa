@@ -6,6 +6,7 @@
 import random
 import yaml
 from collections import OrderedDict
+from datetime import date
 
 class SecretSanta(object):
 
@@ -15,6 +16,8 @@ class SecretSanta(object):
         self.debug = debug
         self.write = write
         self.email = email
+        d = date.today()
+        self.year = d.year
 
     def badmatch(self, elves, santa, pick):
         """Santa can't pick themselves or anyone in their immediate family
@@ -80,11 +83,11 @@ class SecretSanta(object):
     
     def makefiles(self, secretsantas):    
         for santa, pick in secretsantas.iteritems():
-          message = santa + " is secret santa for: " + pick
-          santaf = santa + "_secret_santa.txt"
-          f = open(santaf, 'w+')
-          f.write(message)
-          f.close()    
+            message = '{0} is secret santa for: {1} '.format(santa, pick)
+            santaf = '/tmp/{0}_SecretSanta-{1}.txt'.format(santa, self.year)
+
+            with open(santaf, 'w+') as f:
+              f.write(message)
    
     def load_config(self):
         with open(self.santas_config, 'r') as f:
@@ -95,7 +98,8 @@ class SecretSanta(object):
         while keepplaying:
             
             if self.debug:
-              print elves
+              print self.couples 
+
             hat = []        
             secretsantas = OrderedDict()
     
