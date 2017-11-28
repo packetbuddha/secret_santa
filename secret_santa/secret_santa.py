@@ -9,10 +9,12 @@ from collections import OrderedDict
 
 class SecretSanta(object):
 
-    def __init__(self, santa_config='santas.yml', debug=False):
+    def __init__(self, santa_config='santas.yml', debug=False, write=False, email=False):
         self.santas_config = santa_config
         self.couples = self.load_config()
         self.debug = debug
+        self.write = write
+        self.email = email
 
     def badmatch(self, elves, santa, pick):
         """Santa can't pick themselves or anyone in their immediate family
@@ -113,5 +115,10 @@ class SecretSanta(object):
             if keepplaying:
                 self.couples = self.load_config()
             
-        self.makefiles(secretsantas)
+        if self.write:
+            self.makefiles(secretsantas)
+        if self.email:
+            from email import email
+            e = email()
+
         return secretsantas
