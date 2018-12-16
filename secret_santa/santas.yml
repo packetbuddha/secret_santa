@@ -24,6 +24,7 @@
     family: germans
   Alfred:
     email: robyn.tewksbury@gmail.com
+<<<<<<< HEAD
     family: germans
 
   Carl:
@@ -31,3 +32,8 @@
     family: tewks
 
  
+=======
+
+- Carl:
+    email: packetbuddha@gmail.com
+>>>>>>> f22222bc1ac95ec84bce8a88e275b7c25247a808

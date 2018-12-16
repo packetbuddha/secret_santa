@@ -7,6 +7,7 @@ import random
 import yaml
 import copy
 from collections import OrderedDict
+from datetime import date
 
 import ssmail
 
@@ -20,6 +21,8 @@ class SecretSanta(object):
         self.debug = debug
         self.write = write
         self.email = email
+        d = date.today()
+        self.year = d.year
 
     def badmatch(self, couples, santa, pick):
         """Santa can't pick themselves or anyone in their immediate family
@@ -82,6 +85,7 @@ class SecretSanta(object):
                     secretsantas[santa] = mypick
                     santaschoice = True
         return False
+<<<<<<< HEAD
 
     def _makefiles(self, secretsantas):
         for santa, child in secretsantas.items():
@@ -102,14 +106,34 @@ class SecretSanta(object):
             r = e.send()
 
     def _load_config(self):
+=======
+    
+    def makefiles(self, secretsantas):    
+        for santa, pick in secretsantas.iteritems():
+            message = '{0} is secret santa for: {1} '.format(santa, pick)
+            santaf = '/tmp/{0}_SecretSanta-{1}.txt'.format(santa, self.year)
+
+            with open(santaf, 'w+') as f:
+              f.write(message)
+   
+    def load_config(self):
+>>>>>>> f22222bc1ac95ec84bce8a88e275b7c25247a808
         with open(self.santas_config, 'r') as f:
             return yaml.load(f)
 
     def run(self):
         keepplaying = True
         while keepplaying:
+<<<<<<< HEAD
 
             hat = []
+=======
+            
+            if self.debug:
+              print self.couples 
+
+            hat = []        
+>>>>>>> f22222bc1ac95ec84bce8a88e275b7c25247a808
             secretsantas = OrderedDict()
 
             # Create list of santas in the hat using couples data
