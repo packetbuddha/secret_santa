@@ -4,16 +4,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-class file(object):
-    
-    def write(santa): 
-        santaf = santa + '_santa.txt'
-        f = open(santaf, 'w+')
-        f.write(text)
-        f.close()
-        
 
-class email(object):
+class Email(object):
     def __init__(self, santa=False, child=False, to_address=False, debug=False,
                  from_address='alittlegnome@gmail.com'):
 
@@ -35,13 +27,13 @@ class email(object):
     		'**** THIS IS JUST A TEST, PLEASE DELETE! ****<br>' \
     		'*********************************************<br><br>'
     
-        self.text = 'Hello my little elf,\n\nCongratulations {0}! You are ' \
+        self.text = 'Hello my little Elf,\n\nCongratulations {0}! You are ' \
                 'Secret Santa for: {1}.\n\nThe price limit is: ${2}\n\n' \
                 ' - Kris Kringle\n'.format(self.santa, self.child, 
                                            self.price_limit)
         
         self.html1 = '<html><head></head><body><font face="courier"><p>Hello' \
-                ' my little elf,<br></p>'
+                ' my little Elf,<br></p>'
         
         self.html2 = 'Congratulations {0}! You are Secret Santa for: ' \
                 '<b> {1}</b>'.format(self.santa, self.child)

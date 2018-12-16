@@ -11,9 +11,9 @@ To Do:
 
 import secret_santa
 
-ss = secret_santa.SecretSanta()
-r = ss.run()
-print r
-print ss.couples
+ss = secret_santa.SecretSanta(email=False, write=True, debug=True)
+matches = ss.run()
+
+print(matches)
 
 
